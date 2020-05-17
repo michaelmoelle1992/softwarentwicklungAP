@@ -1,10 +1,10 @@
-#include "klassen.h"
+#include "auto.h"
 
 int main()
 {
-    Fahrzeug Audi;
+    Auto Doris("Opel","Quietschrot");
 
-    Audi.setRandomKennzeichen();
+
 
     return 0;
 }

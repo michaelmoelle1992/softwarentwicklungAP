@@ -4,8 +4,14 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        klassen.cpp \
-        main.cpp
+        auto.cpp \
+        fahrzeug.cpp \
+        main.cpp \
+        parkhaus.cpp \
+        parkplatz.cpp
 
 HEADERS += \
-    klassen.h
+    auto.h \
+    fahrzeug.h \
+    parkhaus.h \
+    parkplatz.h
