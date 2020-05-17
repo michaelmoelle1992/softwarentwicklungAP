@@ -1,11 +1,18 @@
 #ifndef KLASSEN_H
 #define KLASSEN_H
 
+#include<stdlib.h>
+#include<cstdio>
+#include<cmath>
 
-class klassen
+class Personenelement
 {
+private:
+
+protected:
+
 public:
-    klassen();
+    Personenelement();
 };
 
 #endif // KLASSEN_H
