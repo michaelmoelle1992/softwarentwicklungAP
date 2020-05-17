@@ -23,8 +23,20 @@ protected:
     int etage;
     int platzID;
     bool isBelegt = false; //false = nicht belegt
-    Parkplatz *next;       //true = belegt
+    Parkplatz *nextParkplatz;//true = belegt
+    static int platzCounter;
+    static int etagenCounter;
 public:
+    Parkplatz();
+    ~Parkplatz() {}
 
+    int getEtage() const;
+    void setEtage(int value);
+    int getPlatzID() const;
+    void setPlatzID(int value);
+    bool getIsBelegt() const;
+    void setIsBelegt(bool value);
+    Parkplatz *getNextParkplatz() const;
+    void setNextParkplatz(Parkplatz *value);
 };
 #endif // PARKPLATZ_H

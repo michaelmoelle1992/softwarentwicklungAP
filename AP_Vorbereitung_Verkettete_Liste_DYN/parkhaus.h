@@ -19,14 +19,20 @@ using namespace std;
 class Parkhaus : public Parkplatz //In diesem Sinne die Liste
 {
 private:
-   Parkplatz *erster_platz;
+   Parkplatz *erster_platz; //Hilfspointer
    Parkplatz *letzter_platz;
 
 protected:
 
 public:
-   Parkhaus() {}
+   Parkhaus();
     ~Parkhaus() {}
+   Parkplatz *getErster_platz() const;
+   void setErster_platz(Parkplatz *value);
+   Parkplatz *getLetzter_platz() const;
+   void setLetzter_platz(Parkplatz *value);
+   //Operator-Überladung (+) zum Hinzufügen der Parklätze
+   Parkhaus& operator+(Parkplatz &p);
 };
 
 #endif // PARKHAUS_H
