@@ -1,9 +1,10 @@
-#include <iostream>
-
-using namespace std;
+#include "klassen.h"
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    Fahrzeug Audi;
+
+    Audi.setRandomKennzeichen();
+
     return 0;
 }
