@@ -32,7 +32,7 @@ public:
    Parkplatz *getLetzter_platz() const;
    void setLetzter_platz(Parkplatz *value);
    //Operator-Überladung (+) zum Hinzufügen der Parklätze
-   Parkhaus& operator+(Parkplatz &p);
+   Parkhaus& operator+(Parkplatz *p);
 };
 
 #endif // PARKHAUS_H

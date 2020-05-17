@@ -37,14 +37,14 @@ void Parkhaus::setErster_platz(Parkplatz *value)
 
 
 //Operator-Überladung
-Parkhaus &Parkhaus::operator+(Parkplatz &p)
+Parkhaus &Parkhaus::operator+(Parkplatz *p)
 {
     Parkplatz *temp = this->erster_platz;
 
     if(temp == nullptr) //Erste Platz im Parkhaus
     {
-        this->setErster_platz(&p);
-        this->setLetzter_platz(&p);
+        this->setErster_platz(p);
+        this->setLetzter_platz(p);
     }
     else
     {
@@ -52,7 +52,7 @@ Parkhaus &Parkhaus::operator+(Parkplatz &p)
         {
             temp = temp->getNextParkplatz();
         }
-        temp->setNextParkplatz(&p);
-        this->setLetzter_platz(&p);
+        temp->setNextParkplatz(p);
+        this->setLetzter_platz(p);
     }
 }
