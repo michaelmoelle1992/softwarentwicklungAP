@@ -13,6 +13,7 @@
 #include<ctime>
 #include<cstring>
 #include"parkhaus.h"
+#include"parkplatz.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ private:
 
 protected:
     string kennzeichen;
+    Parkplatz *belegter_Platz;
 
 public:
     Fahrzeug();
@@ -32,10 +34,12 @@ public:
     string& getKennzeichen(void) {return this->kennzeichen;}
     void setRandomKennzeichen();
 
-    virtual bool einfahren(Parkhaus *p);
-    virtual bool ausfahren(Parkhaus *p);
+    virtual void einfahren(Parkhaus *p);
+    virtual void ausfahren(Parkhaus *p);
 
 
+    Parkplatz *getBelegter_Platz() const;
+    void setBelegter_Platz(Parkplatz *value);
 };
 
 #endif // FAHRZEUG_H

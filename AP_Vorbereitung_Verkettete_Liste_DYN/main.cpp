@@ -10,6 +10,8 @@ int main()
 
     Auto Doris("Opel","Quietschrot");
     Auto Alex("Mercedes","Schwarz");
+    Auto Mustafa("BMW-3er","Silber");
+    Auto Schroeder("Daihatsu","Gelb");
 
 
     Parkhaus MoelleTower;
@@ -17,6 +19,7 @@ int main()
     int i;
     Parkplatz *plaetze[120]; //Ein Array aus Pointern (Danke Digga)
 
+    //Erstelle das Parkhaus
     for(i=0;i<119;i++)
     {
         plaetze[i] = new Parkplatz();
@@ -25,9 +28,19 @@ int main()
         //MoelleTower + new Parkplatz()
     }
 
-
+    //Einfuhr ins Parkhaus
     Alex.einfahren(&MoelleTower);
     Doris.einfahren(&MoelleTower);
+    Mustafa.einfahren(&MoelleTower);
+    Schroeder.einfahren(&MoelleTower);
+
+    //Ausfuhr aus dem Parkhaus
+   Schroeder.ausfahren(&MoelleTower);
+    Doris.ausfahren(&MoelleTower);
+    Mustafa.ausfahren(&MoelleTower);
+    Alex.ausfahren(&MoelleTower);
+
+
 
 
 

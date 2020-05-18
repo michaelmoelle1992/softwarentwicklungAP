@@ -2,6 +2,16 @@
 #include "parkplatz.h"
 #include "parkhaus.h"
 //Konstruktor der Klasse Fahrzeug
+Parkplatz *Fahrzeug::getBelegter_Platz() const
+{
+    return belegter_Platz;
+}
+
+void Fahrzeug::setBelegter_Platz(Parkplatz *value)
+{
+    belegter_Platz = value;
+}
+
 Fahrzeug::Fahrzeug()
 {
 }
@@ -49,13 +59,15 @@ void Fahrzeug::setRandomKennzeichen()
 
 
 //Virtuelle Funktionen
-bool Fahrzeug::einfahren(Parkhaus *p)
+void Fahrzeug::einfahren(Parkhaus *p)
 {
     //Wenn ein Fahrzeug einfährt soll es per Randomverfahren einen
     //Parkplatz auf einem Parkdeck zugewiesen werden
     int parkdeck = 0;
     int platz = 0;
+    int j = 0;
     Parkplatz *location;
+
     //120Plätze / 5Parkdecks = 24
 
     parkdeck = rand() % (5 - 0 + 1) + 0;
@@ -78,7 +90,10 @@ bool Fahrzeug::einfahren(Parkhaus *p)
            }
            else
            {
+
                 location->setIsBelegt(true); //ES IST WAHR! DER PLATZ IST BESETZT
+                setBelegter_Platz(location);
+                cout << "Folgender Parklpatz wird belegt" << endl;
                 cout << "Platz-ID: " << location->getPlatzID() << endl;
                 cout << "Parkdeck: " << location->getEtage() << endl;
                 cout << "Fahrzeug: " << this->kennzeichen << endl;
@@ -87,11 +102,19 @@ bool Fahrzeug::einfahren(Parkhaus *p)
            }
        }
        location = location->getNextParkplatz();
+       j++;
     }
 }
 
-bool Fahrzeug::ausfahren(Parkhaus *p)
+void Fahrzeug::ausfahren(Parkhaus *p)
 {
+   Parkplatz *freizugebener_platz;
 
+   freizugebener_platz = this->getBelegter_Platz();
+
+   freizugebener_platz->setIsBelegt(false); //Ausfahrt! Aber rucki-zucki!
+
+   cout << this->getKennzeichen() << " hat das Parkhaus Verlassen." << endl;
+   cout << "Platz-ID: " << freizugebener_platz->getPlatzID() << " ist wieder frei." << endl;
 }
 
