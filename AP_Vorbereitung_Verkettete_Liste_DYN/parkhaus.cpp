@@ -1,7 +1,5 @@
 #include "parkhaus.h"
 
-static int ppCounter = 0;
-
 //Konstruktor der Klasse Parkhaus
 Parkhaus::Parkhaus()
 {
@@ -45,6 +43,8 @@ Parkhaus &Parkhaus::operator+(Parkplatz *p)
     {
         this->setErster_platz(p);
         this->setLetzter_platz(p);
+
+        return *this;
     }
     else
     {
@@ -54,5 +54,7 @@ Parkhaus &Parkhaus::operator+(Parkplatz *p)
         }
         temp->setNextParkplatz(p);
         this->setLetzter_platz(p);
+
+        return *this;
     }
 }

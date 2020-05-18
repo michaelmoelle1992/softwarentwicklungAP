@@ -12,6 +12,8 @@
 #include<time.h>
 #include<ctime>
 #include<cstring>
+#include"parkhaus.h"
+
 using namespace std;
 
 //Klasse Fahrzeug - Basisklasse für Auto
@@ -21,6 +23,7 @@ private:
 
 protected:
     string kennzeichen;
+
 public:
     Fahrzeug();
     virtual ~Fahrzeug() {}
@@ -29,8 +32,8 @@ public:
     string& getKennzeichen(void) {return this->kennzeichen;}
     void setRandomKennzeichen();
 
-    virtual bool einfahren();
-    virtual bool ausfahren();
+    virtual bool einfahren(Parkhaus *p);
+    virtual bool ausfahren(Parkhaus *p);
 
 
 };

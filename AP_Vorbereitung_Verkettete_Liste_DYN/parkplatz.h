@@ -1,6 +1,5 @@
 #ifndef PARKPLATZ_H
 #define PARKPLATZ_H
-
 #include<iostream>
 #include<stdlib.h>
 #include<stdio.h>
@@ -12,6 +11,7 @@
 #include<time.h>
 #include<ctime>
 #include<cstring>
+
 using namespace std;
 
 //Klasse: Parklatz - abgeleitet von Parkhaus

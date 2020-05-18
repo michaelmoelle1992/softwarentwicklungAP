@@ -1,5 +1,6 @@
 #include "fahrzeug.h"
-
+#include "parkplatz.h"
+#include "parkhaus.h"
 //Konstruktor der Klasse Fahrzeug
 Fahrzeug::Fahrzeug()
 {
@@ -13,8 +14,8 @@ void Fahrzeug::setRandomKennzeichen()
     string s_buchstaben = "";
     string s_zahlen = "";
     string s_kennzeichen = "";
-
-    srand(unsigned(time(0)));
+    int zahlen_i[3];
+    char zahlen_c[3];
 
     for(i=0;i<3;i++)
     {
@@ -34,7 +35,9 @@ void Fahrzeug::setRandomKennzeichen()
     {
         //Zahlen nach den Buchstaben
         //Zahlen laut ASCII-Tabelle: 48 - 57
-         s_zahlen += std::to_string(rand() % (57 - 48 + 1) + 1);
+        zahlen_i[i] = rand() % (57 - 48 + 1) + 1;
+        itoa(*(zahlen_i + i),(zahlen_c + i),10);
+        s_zahlen += zahlen_c[i];
     }
 
     s_kennzeichen = s_landkreis + '-' + s_buchstaben + '-' + s_zahlen;
@@ -46,12 +49,48 @@ void Fahrzeug::setRandomKennzeichen()
 
 
 //Virtuelle Funktionen
-bool Fahrzeug::einfahren()
+bool Fahrzeug::einfahren(Parkhaus *p)
 {
+    //Wenn ein Fahrzeug einfährt soll es per Randomverfahren einen
+    //Parkplatz auf einem Parkdeck zugewiesen werden
+    int parkdeck = 0;
+    int platz = 0;
+    Parkplatz *location;
+    //120Plätze / 5Parkdecks = 24
 
+    parkdeck = rand() % (5 - 0 + 1) + 0;
+
+    if(parkdeck == 0) platz = rand() % (24 - 0 + 1) + 0;
+    else if(parkdeck == 1) platz = rand() % (48 - 24 + 1) + 24;
+    else if(parkdeck == 2) platz = rand() % (72 - 48 + 1) + 48;
+    else if(parkdeck == 3) platz = rand() % (96 - 72 + 1) + 72;
+    else if(parkdeck == 4) platz = rand() % (120 - 96 + 1) + 96;
+
+    location = p->getErster_platz();
+    while(location != nullptr)
+    {
+
+       if(location->getPlatzID() == platz)
+       {
+           if(location->getIsBelegt() == true)
+           {
+               this->einfahren(p); //Rekusiver virtueller Methodenaufruf
+           }
+           else
+           {
+                location->setIsBelegt(true); //ES IST WAHR! DER PLATZ IST BESETZT
+                cout << "Platz-ID: " << location->getPlatzID() << endl;
+                cout << "Parkdeck: " << location->getEtage() << endl;
+                cout << "Fahrzeug: " << this->kennzeichen << endl;
+
+                break; //ABBRUCHBEDINGUNG
+           }
+       }
+       location = location->getNextParkplatz();
+    }
 }
 
-bool Fahrzeug::ausfahren()
+bool Fahrzeug::ausfahren(Parkhaus *p)
 {
 
 }

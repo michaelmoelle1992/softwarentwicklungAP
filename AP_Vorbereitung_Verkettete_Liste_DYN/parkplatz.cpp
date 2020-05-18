@@ -7,26 +7,29 @@ int Parkplatz::etagenCounter = 0;
 
 Parkplatz::Parkplatz()
 {
-    int etageCounter = 0;
 
-    while(platzCounter < 121)
+    if(platzCounter < 120)
     {
         this->nextParkplatz = nullptr;
-        this->platzID = ++platzCounter;
+        this->platzID = platzCounter++;
         cout << "Parkplatz ID: " << platzID << endl;
 
-        if(platzCounter % 24)
+        if(platzCounter % 24 == 0)
         {
-            this->etage = ++etageCounter;
+            this->etage =etagenCounter++;
             cout << "Parkdeck-Nr: " << etage << endl;
         }
         else
         {
-            this->etage = etageCounter;
+            this->etage = etagenCounter;
             cout << "Parkdeck-Nr: " << etage << endl;
         }
     }
-    cout << "Die maximale Anzahl an Parklaetzen ist erreicht." << endl;
+    else
+    {
+        cout << "Die maximale Anzahl an Parklaetzen ist erreicht." << endl;
+    }
+
 
 }
 

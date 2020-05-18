@@ -12,8 +12,8 @@
 #include<time.h>
 #include<ctime>
 #include<cstring>
-using namespace std;
 #include "parkplatz.h"
+using namespace std;
 
 //Klasse Parkhaus - Basisklasse
 class Parkhaus : public Parkplatz //In diesem Sinne die Liste
